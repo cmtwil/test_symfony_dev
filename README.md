@@ -1,4 +1,4 @@
-#test_symfony_dev
+## test_symfony_dev
 
 Les prérequis pour ce test sont :
 
