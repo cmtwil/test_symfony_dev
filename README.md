@@ -7,3 +7,4 @@ Les prérequis pour ce test sont :
  - lancer un composer update pour installer les libs du projet
  - créer la database avec  php app/console doctrine:database:create 
  - importer le schema existant avec la commande  php app/console doctrine:schema:update
+ - Les consignes du test sont données lorsque vous affichez le projet dans votre navigateur 
