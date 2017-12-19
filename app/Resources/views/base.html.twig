@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Twil{% endblock %}</title>
+    {% block stylesheets %}
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body id="{{ app.request.get('_route') }}">
+<div class="container">
+{% block body %}
+
+{% endblock %}
+</div>
+{% block footer %}
+    {#        <hr>
+            <footer>
+                <div class="container-fluid">
+                    <p>&copy; 2014 - TWIL&trade;</p>
+                </div>
+            </footer>#}
+{% endblock %}
+{% block javascripts %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+{% endblock %}
+</body>
+</html>

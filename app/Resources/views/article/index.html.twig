@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Test de développement Symfony 2 -  Twil</h1>
+
+<div class="jumbotron">
+    Ce test a pour but d'évaluer vos compétences en développement Symfony 2 <br>
+    Il a été réalisé pour un environnement du type Symfony 2.8. <br>
+
+    Vous êtes libre de modifier le module BlogBundle comme bon vous semble <br>
+    Les fichiers de template se trouvent dans app/Resources/view/article/* <br>
+    L'exercice 2 est dépendant du 1 et est à faire seulement si vous avez terminé le 1 <br>
+
+
+</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Createdat</th>
+                <th>Updatedat</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('blog_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.description }}</td>
+                <td>{% if article.createdAt %}{{ article.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if article.updatedAt %}{{ article.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ article.type }}</td>
+                <td>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="{{ path('blog_show', { 'id': article.id }) }}" class="btn btn-primary btn-xs" role="button" >show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('blog_edit', { 'id': article.id }) }}" class="btn btn-success btn-xs" role="button">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('blog_new') }}" class="btn btn-success" role="button">Create a new entry</a>
+        </li>
+    </ul>
+
+    <h2>Exercice 1 :  Lister les articles par type</h2>
+    <p>
+        L'objectif de cet exercice est de récupérer les articles de type "vin" et de les afficher<br>
+        Il faudra bien entendu quelques articles créés manuellement  avec le type "vin" pour notre test: <br> <br>
+         - Voici les 4 étapes de l'exercice : <br>
+          1 - Créer une fonction dans le repository ArticleRepository permettant de récupérer les articles par type. <br>
+          2 - Créer une nouvelle route dans le controller Article permettant de lister les articles par type <br>
+          3 - Créer un template chargé d'afficher les articles de type "vin" avec seulement le titre et la description<br>
+          4 - Compléter le path vers cette nouvelle route pour que l'on puisse y accéder
+    </p>
+    <a href="">Lien vers la route qui affiche les articles de type vin</a>
+
+    <h2>Exercice 2 : Service</h2>
+    <p>
+        Cette exercice s'adresse aux plus expérimentés : <br>
+
+        1 - Créer une classe  ArticleManager dans un dossier  DatabaseManager <br>
+        2 - Créer un service pour cette classe (ArticleManager) dans lequel on injecte le doctrine.orm.entity_manager<br>
+        3 - Ajouter une fonction getArticlesByType chargée comme précédemment de lister les articles par type<br>
+        4 - Modifier le controller de la question précédente pour utiliser le service nouvellement créer<br>
+
+
+    </p>
+
+{% endblock %}
